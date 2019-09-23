@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= @project_name_camel_case %></title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="<%%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  </head>
+  <body class="font-sans antialiased bg-gray-800">
+    <main role="main">
+      <p class="bg-blue-500 text-white px-2 tracking-wide leading-relaxed" role="alert"><%%= get_flash(@conn, :info) %></p>
+      <p class="bg-red-500 text-white px-2 tracking-wide leading-relaxed" role="alert"><%%= get_flash(@conn, :error) %></p>
+      <%%= render @view_module, @view_template, assigns %>
+      <%%= live_render(@conn, <%= @project_name_camel_case %>Web.Live.Example) %>
+    </main>
+    <script type="text/javascript" src="<%%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
