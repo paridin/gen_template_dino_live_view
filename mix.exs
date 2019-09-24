@@ -2,7 +2,7 @@ defmodule PhxCustomTemplate.Mixfile do
   use Mix.Project
 
   @name    :phx_custom_template
-  @version "0.1.0"
+  @version "0.1.1"
 
   @deps [
     { :mix_templates,  ">0.0.0",  app: false },
@@ -35,7 +35,7 @@ defmodule PhxCustomTemplate.Mixfile do
   defp package do
     [
       name:        @name,
-      files:       ["lib", "mix.exs", "README.md", "LICENSE.md", "template"],
+      files:       ["lib", "mix.exs", "README.md", "LICENSE.md", "template", "base"],
       maintainers: @maintainers,
       licenses:    ["Apache 2.0"],
       links:       %{
