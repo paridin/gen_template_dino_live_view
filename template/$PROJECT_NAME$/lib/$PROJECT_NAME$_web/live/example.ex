@@ -12,13 +12,13 @@ defmodule <%= @project_name_camel_case %>Web.Live.Example do
   def render(assigns) do
     ~L"""
     <section class="mx-10">
-      <header class="bg-indigo-800 flex items-center text-white justify-between px-4 py-3 font-bold shadow-lg rounded">
+      <header class="bg-green-800 flex items-center text-white justify-between px-4 py-3 font-bold shadow-lg rounded">
         <h3 class="text-lg">Live View Example</h3>
-        <a class="hover:text-indigo-500" href="https://github.com/chrismccord/phoenix_live_view_example/blob/4a38c77a1f8b4ccc3b4b75aa581b28d51d70530c/lib/demo_web/live/top_live.ex">
+        <a class="hover:text-green-500" href="https://github.com/chrismccord/phoenix_live_view_example/blob/4a38c77a1f8b4ccc3b4b75aa581b28d51d70530c/lib/demo_web/live/top_live.ex">
           <span class="text-2xl">↬</span> Source
         </a>
       </header>
-      <div class="bg-indigo-900 text-white shadow-lg rounded mt-4">
+      <div class="bg-green-900 text-white shadow-lg rounded mt-4">
         <pre class="font-mono text-sm px-4 h-custom-40 scrolling-touch overflow-auto">
           <%%= @top %>
         </pre>
