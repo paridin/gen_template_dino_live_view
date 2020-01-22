@@ -1,7 +1,14 @@
 defmodule <%= @project_name_camel_case %>Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :<%= @project_name %>
 
-  socket "/live", Phoenix.LiveView.Socket
+  @session_options [
+    store: :cookie,
+    key: "_<%= @project_name %>_key",
+    signing_salt: "<%= @signing_salt_session %>"
+  ]
+
+  socket "/live", Phoenix.LiveView.Socket,
+    websocket: [connect_info: [session: @session_options]]
 
   socket "/socket", <%= @project_name_camel_case %>Web.UserSocket,
     websocket: true,
@@ -39,10 +46,7 @@ defmodule <%= @project_name_camel_case %>Web.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_<%= @project_name %>_key",
-    signing_salt: "<%= @signing_salt_session %>"
+  plug Plug.Session, @session_options
 
   plug <%= @project_name_camel_case %>Web.Router
 end

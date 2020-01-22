@@ -43,5 +43,6 @@ import LiveSocket from "phoenix_live_view"
 //
 // let liveSocket = new LiveSocket("/socket", Socket, {hooks: Hooks})
 
-let liveSocket = new LiveSocket("/live", Socket)
+const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+const liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}});
 liveSocket.connect()

@@ -11,11 +11,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
     <link rel="manifest" href="/images/favicons/site.webmanifest">
     <link rel="stylesheet" href="<%%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <%= csrf_meta_tag() %>
   </head>
   <body class="font-sans antialiased bg-gray-800">
     <main role="main">
-      <p class="bg-blue-500 text-white px-2 tracking-wide leading-relaxed" role="alert"><%%= get_flash(@conn, :info) %></p>
-      <p class="bg-red-500 text-white px-2 tracking-wide leading-relaxed" role="alert"><%%= get_flash(@conn, :error) %></p>
+      <p class="px-2 leading-relaxed tracking-wide text-white bg-blue-500" role="alert"><%%= get_flash(@conn, :info) %></p>
+      <p class="px-2 leading-relaxed tracking-wide text-white bg-red-500" role="alert"><%%= get_flash(@conn, :error) %></p>
       <%%= render @view_module, @view_template, assigns %>
       <%%= live_render(@conn, <%= @project_name_camel_case %>Web.Live.Example) %>
     </main>

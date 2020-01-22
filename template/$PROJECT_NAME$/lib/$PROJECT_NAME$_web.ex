@@ -42,7 +42,7 @@ defmodule <%= @project_name_camel_case %>Web do
 
       import <%= @project_name_camel_case %>Web.ErrorHelpers
       import <%= @project_name_camel_case %>Web.Gettext
-      import Phoenix.LiveView, only: [live_render: 2, live_render: 3, live_link: 1, live_link: 2]
+      import Phoenix.LiveView.Helpers
       alias <%= @project_name_camel_case %>Web.Router.Helpers, as: Routes
     end
   end
@@ -50,9 +50,28 @@ defmodule <%= @project_name_camel_case %>Web do
   def live_view do
     quote do
       use Phoenix.LiveView
+      import Phoenix.LiveView.Helpers
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.HTML.Link, only: [link: 2]
+
+      # Use all HTML functionality (forms, tags, etc)
+      use Phoenix.HTML
+
+      import <%= @project_name_camel_case %>Web.ErrorHelpers
+      import <%= @project_name_camel_case %>Web.Gettext
+      alias <%= @project_name_camel_case %>Web.Router.Helpers, as: Routes
+    end
+  end
+
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+      import Phoenix.LiveView.Helpers
+
+      # Import convenience functions from controllers
+      # import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
       import Phoenix.HTML.Link, only: [link: 2]
 
       # Use all HTML functionality (forms, tags, etc)
