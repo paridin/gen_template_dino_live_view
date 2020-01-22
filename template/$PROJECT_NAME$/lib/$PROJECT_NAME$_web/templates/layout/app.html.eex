@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
     <link rel="manifest" href="/images/favicons/site.webmanifest">
     <link rel="stylesheet" href="<%%= Routes.static_path(@conn, "/css/app.css") %>"/>
-    <%= csrf_meta_tag() %>
+    <%%= csrf_meta_tag() %>
   </head>
   <body class="font-sans antialiased bg-gray-800">
     <main role="main">
