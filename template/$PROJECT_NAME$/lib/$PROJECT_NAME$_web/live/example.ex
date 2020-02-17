@@ -12,14 +12,14 @@ defmodule <%= @project_name_camel_case %>Web.Live.Example do
   def render(assigns) do
     ~L"""
     <section class="mx-10">
-      <header class="bg-green-800 flex items-center text-white justify-between px-4 py-3 font-bold shadow-lg rounded">
+      <header class="flex items-center justify-between px-4 py-3 font-bold text-white bg-green-800 rounded shadow-lg">
         <h3 class="text-lg">Live View Example</h3>
         <a class="hover:text-green-500" href="https://github.com/chrismccord/phoenix_live_view_example/blob/4a38c77a1f8b4ccc3b4b75aa581b28d51d70530c/lib/demo_web/live/top_live.ex">
           <span class="text-2xl">↬</span> Source
         </a>
       </header>
-      <div class="bg-green-900 text-white shadow-lg rounded mt-4">
-        <pre class="font-mono text-sm px-4 h-custom-40 scrolling-touch overflow-auto">
+      <div class="mt-4 text-white bg-green-900 rounded shadow-lg">
+        <pre class="px-4 overflow-auto scrolling-touch font-mono text-sm h-custom-40">
           <%%= @top %>
         </pre>
       </div>
@@ -27,7 +27,7 @@ defmodule <%= @project_name_camel_case %>Web.Live.Example do
     """
   end
 
-  def mount(_session, socket) do
+  def mount(_params, _session, socket) do
     if connected?(socket), do: :timer.send_interval(1000, self(), :tick)
 
     {:ok, put_top(socket)}

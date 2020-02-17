@@ -2,7 +2,7 @@ defmodule PhxCustomTemplate.Mixfile do
   use Mix.Project
 
   @name    :phx_custom_template
-  @version "0.1.3"
+  @version "0.1.4"
 
   @deps [
     { :mix_templates,  ">0.0.0",  app: false },
