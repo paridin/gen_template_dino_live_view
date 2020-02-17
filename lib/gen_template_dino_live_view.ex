@@ -3,7 +3,7 @@ defmodule GenTemplateDinoLiveView do
   @moduledoc File.read!(Path.join([__DIR__, "../README.md"]))
 
   use MixTemplates,
-    name:       :gen_template_dino_live_View,
+    name:       :gen_template_dino_live_view,
     short_desc: "An opinionated template to create phoenix apps, using live view and tailwind.",
     source_dir: "../template",
     options:    [
