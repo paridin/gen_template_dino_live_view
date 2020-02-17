@@ -1,4 +1,4 @@
-# PhxCustomTemplate
+# Dino LiveView Boilerplate
 
 > An opinionated template to create phoenix apps, using live view and tailwind.
 
@@ -16,10 +16,10 @@ mix archive.install hex mix_generator
 
 ## Install
 
-Install the phx_custom_template using the following command:
+Install the gen_template_dino_live_view using the following command:
 
 ```
-mix template.install hex phx_custom_template
+mix template.install gen_template_dino_live_view
 ```
 
 ## Usage
@@ -48,3 +48,4 @@ Remember replace `project` with the name of your `project`.
 
 ----
 Created:  2019-09-22
+Updated: 2020-02-16 - upgraded to Phoenix 1.7.x and tailwind 1.2
