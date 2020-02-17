@@ -1,9 +1,9 @@
-defmodule PhxCustomTemplate do
+defmodule GenTemplateDinoLiveView do
 
   @moduledoc File.read!(Path.join([__DIR__, "../README.md"]))
 
   use MixTemplates,
-    name:       :phx_custom_template,
+    name:       :gen_template_dino_live_View,
     short_desc: "An opinionated template to create phoenix apps, using live view and tailwind.",
     source_dir: "../template",
     options:    [

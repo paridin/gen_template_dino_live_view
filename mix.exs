@@ -1,7 +1,7 @@
-defmodule PhxCustomTemplate.Mixfile do
+defmodule GenTemplateDinoLiveView.Mixfile do
   use Mix.Project
 
-  @name    :gen_dino_template
+  @name    :gen_template_dino_live_view
   @version "0.1.5"
 
   @deps [
