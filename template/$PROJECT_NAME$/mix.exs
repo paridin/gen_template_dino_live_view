@@ -48,10 +48,10 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.7"},
       {:floki, "~> 0.25.0", only: :test},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
+      {:gettext, "~> 0.17"},
+      {:jason, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
-      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test}
     ]
   end
