@@ -46,7 +46,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_html, "~> 2.14"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.7"},
+      {:phoenix_live_view, "~> 0.8"},
       {:floki, "~> 0.25.0", only: :test},
       {:gettext, "~> 0.17"},
       {:jason, "~> 1.1"},
