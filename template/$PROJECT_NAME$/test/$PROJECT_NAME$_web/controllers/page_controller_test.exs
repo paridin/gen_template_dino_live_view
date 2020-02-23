@@ -3,6 +3,6 @@ defmodule <%= @project_name_camel_case %>Web.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "An opinionated template"
+    assert html_response(conn, 200) =~ "Boilerplate!"
   end
 end
