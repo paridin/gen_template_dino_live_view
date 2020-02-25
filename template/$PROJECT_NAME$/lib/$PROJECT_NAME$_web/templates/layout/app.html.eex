@@ -14,12 +14,9 @@
     <%%= csrf_meta_tag() %>
   </head>
   <body class="font-sans antialiased bg-gray-800">
-    <main role="main">
       <p class="px-2 leading-relaxed tracking-wide text-white bg-blue-500" role="alert"><%%= get_flash(@conn, :info) %></p>
       <p class="px-2 leading-relaxed tracking-wide text-white bg-red-500" role="alert"><%%= get_flash(@conn, :error) %></p>
       <%%= render @view_module, @view_template, assigns %>
-      <%%= live_render(@conn, <%= @project_name_camel_case %>Web.Live.Example) %>
-    </main>
     <script type="text/javascript" src="<%%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

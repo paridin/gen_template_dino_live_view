@@ -49,7 +49,7 @@ defmodule <%= @project_name_camel_case %>Web do
 
   def live_view do
     quote do
-      use Phoenix.LiveView
+      use Phoenix.LiveView, layout: {<%= @project_name_camel_case %>Web.LayoutView, "live.html"}
       import Phoenix.LiveView.Helpers
 
       # Import convenience functions from controllers
