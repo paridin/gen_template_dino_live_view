@@ -1,3 +1,5 @@
+<%= live_component(@socket, <%= @project_name_camel_case %>Web.Live.Layout.Header, id: :main_header, title: "<%= @project_name_camel_case %>") %>
+
 <main role="main">
   <%= @inner_content %>
 </main>

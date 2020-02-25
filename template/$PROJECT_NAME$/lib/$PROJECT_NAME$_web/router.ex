@@ -9,18 +9,10 @@ defmodule <%= @project_name_camel_case %>Web.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", <%= @project_name_camel_case %>Web do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live("/", Live.Home)
+    live("/top", Live.TopExample)
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", <%= @project_name_camel_case %>Web do
-  #   pipe_through :api
-  # end
 end
