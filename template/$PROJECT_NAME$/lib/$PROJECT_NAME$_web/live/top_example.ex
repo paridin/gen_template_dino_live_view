@@ -1,7 +1,7 @@
-defmodule <%= @project_name_camel_case %>Web.Live.Example do
+defmodule <%= @project_name_camel_case %>Web.Live.TopExample do
   @moduledoc """
-  Example for live view demo
-  Remove me it is just an example
+  TopExample for live view demo
+  Remove me it is just an example, remember also remove from router.ex`
 
   https://github.com/chrismccord/phoenix_live_view_example/blob/4a38c77a1f8b4ccc3b4b75aa581b28d51d70530c/lib/demo_web/live/top_live.ex
   """
@@ -13,7 +13,7 @@ defmodule <%= @project_name_camel_case %>Web.Live.Example do
     ~L"""
     <section class="mx-10">
       <header class="flex items-center justify-between px-4 py-3 font-bold text-white bg-green-800 rounded shadow-lg">
-        <h3 class="text-lg">Live View Example</h3>
+        <h3 class="text-lg">Live View Top Example</h3>
         <a class="hover:text-green-500" href="https://github.com/chrismccord/phoenix_live_view_example/blob/4a38c77a1f8b4ccc3b4b75aa581b28d51d70530c/lib/demo_web/live/top_live.ex">
           <span class="text-2xl">↬</span> Source
         </a>
