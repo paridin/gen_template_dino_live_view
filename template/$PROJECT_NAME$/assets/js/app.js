@@ -46,3 +46,13 @@ import LiveSocket from "phoenix_live_view"
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 const liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}});
 liveSocket.connect()
+
+if (process.env.NODE_ENV === "development") {
+  window.liveSocket = liveSocket
+}
+
+// Then during your code session, you can use the browser console:
+// liveSocket.enableDebug()
+
+// to simulate latency, you can use the browser console:
+// liveSocket.enableLatencySim(1000)
