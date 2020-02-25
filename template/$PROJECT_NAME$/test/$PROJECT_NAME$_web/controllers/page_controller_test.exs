@@ -1,8 +1,8 @@
-defmodule <%= @project_name_camel_case %>Web.PageControllerTest do
+defmodule <%= @project_name_camel_case %>Web.LayoutControllerTest do
   use <%= @project_name_camel_case %>Web.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Boilerplate!"
+    assert html_response(conn, 200) =~ "font-sans antialiased bg-gray-800"
   end
 end
