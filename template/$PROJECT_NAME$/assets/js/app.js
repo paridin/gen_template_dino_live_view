@@ -3,6 +3,13 @@
 // its own CSS file.
 import css from "../css/app.css"
 
+// Support for NProgress loading states.
+import NProgress from "nprogress"
+NProgress.configure({ showSpinner: false, minimum: 0.1});
+
+window.addEventListener("phx:page-loading-start", info => NProgress.start())
+window.addEventListener("phx:page-loading-stop", info => NProgress.done())
+
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
 // in "webpack.config.js".
