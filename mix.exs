@@ -2,7 +2,7 @@ defmodule GenTemplateDinoLiveView.Mixfile do
   use Mix.Project
 
   @name    :gen_template_dino_live_view
-  @version "0.1.7"
+  @version "0.2.0"
 
   @deps [
     { :mix_templates,  ">0.0.0",  app: false },
