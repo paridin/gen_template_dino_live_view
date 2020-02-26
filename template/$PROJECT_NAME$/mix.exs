@@ -19,7 +19,15 @@ defmodule <%= @project_name_camel_case %>.MixProject do
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
-      deps: deps()
+      deps: deps(),
+      # ExDoc
+      name: "<%= @project_name %>",
+      source_url: "https://github.com/<%= System.get_env("USER") %>/<%= @project_name %>",
+      homepage_url: "https://<%= @project_name %>.com",
+      docs: [
+        main: "<%= @project_name %>",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -52,6 +60,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:jason, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:excoveralls, "~> 0.10", only: :test}
     ]
   end
