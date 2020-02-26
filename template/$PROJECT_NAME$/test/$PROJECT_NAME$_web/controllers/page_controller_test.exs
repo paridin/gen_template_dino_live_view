@@ -1,5 +1,5 @@
 defmodule <%= @project_name_camel_case %>Web.LayoutControllerTest do
-  use <%= @project_name_camel_case %>Web.ConnCase
+  use <%= @project_name_camel_case %>Web.ConnCase, async: true
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
