@@ -1,25 +1,17 @@
 defmodule <%= @project_name_camel_case %>.MixProject do
   use Mix.Project
 
-  @app :<%= @project_name %>
-  @version "<%= @project_version %>"
-
   def project do
     [
-      app: @app,
-      version: @version,
+      app: :<%= @project_name %>,
+      version: "<%= @project_version %>",
       elixir: "~> <%= @elixir_version %>",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.post": :test,
-        "coveralls.html": :test
-      ],
-      deps: deps(),
+      description: "My awesome project <%= @project_name %>.",
+      package: package(),
       # ExDoc
       name: "<%= @project_name %>",
       source_url: "https://github.com/<%= System.get_env("USER") %>/<%= @project_name %>",
@@ -27,10 +19,23 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       docs: [
         main: "<%= @project_name %>",
         extras: ["README.md"]
-      ]
+      ],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
+      deps: deps(),
     ]
   end
 
+  defp package do
+    [
+      licenses: ["Apache-2.0"],
+      links: %{}
+    ]
+  end
   # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.
@@ -54,7 +59,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_html, "~> 2.14"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.8"},
+      {:phoenix_live_view, "~> 0.10"},
       {:floki, "~> 0.25.0", only: :test},
       {:gettext, "~> 0.17"},
       {:jason, "~> 1.1"},

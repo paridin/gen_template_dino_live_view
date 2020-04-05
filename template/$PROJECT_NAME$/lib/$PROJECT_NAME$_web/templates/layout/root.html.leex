@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%%= live_title_tag assigns[:page_title] || "<%= @project_name_camel_case %>", suffix: " · Phoenix Framework" %>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/images/favicons/site.webmanifest" />
+    <link rel="stylesheet" href="<%%= Routes.static_path(@conn, "/css/app.css") %>" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <%%= csrf_meta_tag() %>
+  </head>
+  <body class="font-sans antialiased">
+    <%%= @inner_content %>
+    <script type="text/javascript" src="<%%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

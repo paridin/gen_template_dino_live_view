@@ -1,5 +1,13 @@
-<%%= live_component(@socket, <%= @project_name_camel_case %>Web.Live.Layout.Header, id: :main_header, title: "<%= @project_name_camel_case %>") %>
+<%%= live_component(@socket, <%= @project_name_camel_case %>Web.Live.Layout.Header, id: :main_header, open_menu_mobile?: false) %>
 
 <main role="main">
+  <div class="alert alert-info" role="alert"
+    phx-click="lv:clear-flash"
+    phx-value-key="info"><%%= live_flash(@flash, :info) %></div>
+
+  <div class="alert alert-danger" role="alert"
+    phx-click="lv:clear-flash"
+    phx-value-key="error"><%%= live_flash(@flash, :error) %></div>
+
   <%%= @inner_content %>
 </main>
