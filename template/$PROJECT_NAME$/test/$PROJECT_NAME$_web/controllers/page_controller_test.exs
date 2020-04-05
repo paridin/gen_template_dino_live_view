@@ -3,6 +3,6 @@ defmodule <%= @project_name_camel_case %>Web.LayoutControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "font-sans antialiased bg-gray-800"
+    assert html_response(conn, 200) =~ "font-sans antialiased"
   end
 end
