@@ -17,6 +17,8 @@ Now you can visit [`localhost:4001`](https://localhost:4001) from your browser.
 
 Remember to update the `mix.exs` file with your own configuration.
 
+Accessing into [`dashboard`](https://localhost:4001/dashboard) requires credentials, check the `lib/<%= @project_name %>_web/router.ex` file.
+
 WARNING: only use the generated certificate for testing in a closed network
 environment, such as running a development server on `localhost`.
 For production, staging, or testing servers on the public internet, obtain a

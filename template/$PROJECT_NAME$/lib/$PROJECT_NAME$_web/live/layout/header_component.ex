@@ -26,6 +26,7 @@ defmodule <%= @project_name_camel_case %>Web.Live.Layout.Header do
             </div>
             <div class="hidden md:block md:ml-10 md:pr-4">
               <%%= live_redirect "Home", to: Routes.live_path(@socket, <%= @project_name_camel_case %>Web.Live.Home), class: "font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900" %>
+              <%%= link "Dashboard", to: "/dashboard", class: "ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900" %>
               <%%= live_redirect "Weather Example", to: Routes.live_path(@socket, <%= @project_name_camel_case %>Web.Live.WeatherExample), class: "ml-8 font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-900 focus:outline-none focus:text-indigo-700" %>
             </div>
           </nav>
@@ -47,6 +48,7 @@ defmodule <%= @project_name_camel_case %>Web.Live.Layout.Header do
               </div>
               <div class="flex flex-col px-2 pt-2 pb-3">
                 <%%= live_redirect "Home", to: Routes.live_path(@socket, <%= @project_name_camel_case %>Web.Live.Home), class: "mt-2 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900" %>
+                <%%= link "Dashboard", to: "/dashboard", class: "mt-2 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900" %>
                 <%%= live_redirect "Weather Example", to: Routes.live_path(@socket, <%= @project_name_camel_case %>Web.Live.WeatherExample), class: "mt-2 pb-1 font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-900 focus:outline-none focus:text-indigo-700" %>
               </div>
             </div>
