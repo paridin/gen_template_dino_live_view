@@ -2,11 +2,10 @@
 
 To start your Phoenix server:
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `cd assets && yarn`
-  * Start Phoenix endpoint with `mix phx.server`
+  * cd <%= @project_name %> && mix deps.get && npm i --prefix assets && mix phx.gen.cert -o priv/ssl/<%= @project_name %>
+  * Start Phoenix endpoint with `mix phx.server` or `iex -S mix phx.server`.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit [`localhost:4001`](https://localhost:4001) from your browser.
 
 ```
   Created: <%= @now.local.date_time %>
@@ -16,4 +15,12 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
     OTP: <%= @otp_release %>
 ```
 
-Remember to update de mix.exs file with your project urls.
+Remember to update the `mix.exs` file with your own configuration.
+
+WARNING: only use the generated certificate for testing in a closed network
+environment, such as running a development server on `localhost`.
+For production, staging, or testing servers on the public internet, obtain a
+proper certificate, for example from [Let's Encrypt](https://letsencrypt.org).
+
+NOTE: when using Google Chrome, open chrome://flags/#allow-insecure-localhost
+to enable the use of self-signed certificates on `localhost`.

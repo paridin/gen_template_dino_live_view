@@ -7,6 +7,15 @@ defmodule <%= @project_name_camel_case %>Web.Endpoint do
     signing_salt: "<%= @signing_salt_session %>"
   ]
 
+  if Mix.env == :prod do
+    plug(Plug.SSL,
+      rewrite_on: [:x_forwarded_proto],
+      secure_renegotiate: true,
+      reuse_sessions: true,
+      versions: [:"tlsv1.2"],
+      hsts: true)
+  end
+
   socket "/live", Phoenix.LiveView.Socket,
     websocket: [connect_info: [session: @session_options]]
 

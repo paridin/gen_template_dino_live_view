@@ -1,5 +1,11 @@
 defmodule <%= @project_name_camel_case %>Web.Router do
   use <%= @project_name_camel_case %>Web, :router
+  import Plug.BasicAuth
+  import Phoenix.LiveDashboard.Router
+
+  pipeline :admins_only do
+    plug :basic_auth, username: "<%= @basic_auth_user %>", password: "<%= @basic_auth_password %>"
+  end
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -15,5 +21,10 @@ defmodule <%= @project_name_camel_case %>Web.Router do
 
     live("/", Live.Home)
     live("/example", Live.WeatherExample)
+  end
+
+  scope "/" do
+    pipe_through [:browser, :admins_only]
+    live_dashboard "/dashboard"
   end
 end

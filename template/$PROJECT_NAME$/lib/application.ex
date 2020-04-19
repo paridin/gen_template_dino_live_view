@@ -8,7 +8,9 @@ defmodule <%= @project_name_camel_case %>.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
+      # Start the PubSub system
+      {Phoenix.PubSub, name: <%= @project_name_camel_case %>.PubSub},
+      # Start the Endpoint (http/https)
       <%= @project_name_camel_case %>Web.Endpoint
       # Starts a worker by calling: <%= @project_name_camel_case %>.Worker.start_link(arg)
       # {<%= @project_name_camel_case %>.Worker, arg},

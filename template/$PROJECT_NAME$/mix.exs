@@ -55,17 +55,20 @@ defmodule <%= @project_name_camel_case %>.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4"},
-      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix, "~> 1.5.0-rc.0", override: true},
+      {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_html, "~> 2.14"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.10"},
-      {:floki, "~> 0.25.0", only: :test},
+      {:phoenix_live_view, "~> 0.12"},
+      {:phoenix_live_dashboard, "~> 0.1"},
+      {:plug_cowboy, "~> 2.1"},
       {:gettext, "~> 0.17"},
       {:jason, "~> 1.1"},
-      {:plug_cowboy, "~> 2.0"},
+      # dev & test apps
+      {:sobelow, "~> 0.8", only: :dev},
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+      {:floki, "~> 0.25.0", only: :test},
       {:excoveralls, "~> 0.10", only: :test}
     ]
   end

@@ -10,7 +10,16 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
-  url: [host: "example.com", port: 80],
+  https: [
+    port: String.to_integer(System.get_env("HTTPS_PORT", "443")),
+    cipher_suite: :strong,
+    otp_app: :web,
+    certfile: System.get_env("HTTPS_CERT_FILE") || "/opt/ssl/<%= @project_name %>.pem",
+    keyfile: System.get_env("HTTPS_KEY_FILE") || "/opt/ssl/<%= @project_name %>_key.pem"
+  ],
+  server: true,
+  root: ".",
+  version: Mix.Project.config()[:version],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -23,7 +32,7 @@ config :logger, level: :info
 #
 #     config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
 #       ...
-#       url: [host: "example.com", port: 443],
+#       url: [host: "<%= @project_domain %>", port: 443],
 #       https: [
 #         :inet6,
 #         port: 443,

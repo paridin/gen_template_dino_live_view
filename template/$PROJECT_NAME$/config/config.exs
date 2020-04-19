@@ -9,10 +9,10 @@ use Mix.Config
 
 # Configures the endpoint
 config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "<%= @project_domain %>"],
   secret_key_base: "<%= @secret_key_base %>",
   render_errors: [view: <%= @project_name_camel_case %>Web.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: <%= @project_name_camel_case %>.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: <%= @project_name_camel_case %>.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
