@@ -9,6 +9,7 @@ defmodule <%= @project_name_camel_case %>Web.Live.WeatherExample do
   # This is why we use: `use <%= @project_name_camel_case %>Web, :live_view` similar to `use <%= @project_name_camel_case %>Web, :controller` or `use <%= @project_name_camel_case %>Web, :view`.
   use <%= @project_name_camel_case %>Web, :live_view
 
+  @impl true
   def render(assigns) do
     ~L"""
     <section class="py-6 mx-10">
@@ -28,15 +29,18 @@ defmodule <%= @project_name_camel_case %>Web.Live.WeatherExample do
     """
   end
 
+  @impl true
   def mount(_params, _session, socket) do
     send(self(), {:put, "Mexico City"})
     {:ok, assign(socket, location: nil, weather: "...")}
   end
 
+  @impl true
   def handle_event("set-location", %{"location" => location}, socket) do
     {:noreply, put_location(socket, location)}
   end
 
+  @impl true
   def handle_info({:put, location}, socket) do
     {:noreply, put_location(socket, location)}
   end

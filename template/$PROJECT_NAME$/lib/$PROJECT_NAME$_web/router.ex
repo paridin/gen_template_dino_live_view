@@ -25,6 +25,6 @@ defmodule <%= @project_name_camel_case %>Web.Router do
 
   scope "/" do
     pipe_through [:browser, :admins_only]
-    live_dashboard "/dashboard"
+    live_dashboard "/dashboard", metrics: <%= @project_name_camel_case %>Web.Telemetry
   end
 end

@@ -8,6 +8,8 @@ defmodule <%= @project_name_camel_case %>.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
+      # Start the Telemetry supervisor
+      <%= @project_name_camel_case %>Web.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: <%= @project_name_camel_case %>.PubSub},
       # Start the Endpoint (http/https)

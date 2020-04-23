@@ -15,6 +15,7 @@ defmodule <%= @project_name_camel_case %>Web.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
+  @impl true
   def connect(_params, socket, _connect_info) do
     {:ok, socket}
   end
@@ -29,5 +30,6 @@ defmodule <%= @project_name_camel_case %>Web.UserSocket do
   #     <%= @project_name_camel_case %>Web.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
+  @impl true
   def id(_socket), do: nil
 end

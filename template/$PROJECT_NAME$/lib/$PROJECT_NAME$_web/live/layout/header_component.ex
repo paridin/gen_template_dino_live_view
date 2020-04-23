@@ -4,6 +4,7 @@ defmodule <%= @project_name_camel_case %>Web.Live.Layout.Header do
   """
   use <%= @project_name_camel_case %>Web, :live_component
 
+  @impl true
   def render(assigns) do
     ~L"""
     <header id="header-<%%= @id %>" class="relative bg-gray-100">
@@ -59,10 +60,12 @@ defmodule <%= @project_name_camel_case %>Web.Live.Layout.Header do
     """
   end
 
+  @impl true
   def handle_event("close", _params, socket) do
     {:noreply, assign(socket, open_menu_mobile?: false)}
   end
 
+  @impl true
   def handle_event("open", _params, socket) do
     {:noreply, assign(socket, open_menu_mobile?: true)}
   end

@@ -4,10 +4,7 @@ defmodule <%= @project_name_camel_case %>Web.Live.Home do
   """
   use <%= @project_name_camel_case %>Web, :live_view
 
-  def mount(_params, _session, socket) do
-    {:ok, socket}
-  end
-
+  @impl true
   def render(assigns) do
     ~L"""
     <section class="flex flex-wrap items-center justify-center py-6">
@@ -27,5 +24,10 @@ defmodule <%= @project_name_camel_case %>Web.Live.Home do
       </div>
     </section>
     """
+  end
+
+  @impl true
+  def mount(_params, _session, socket) do
+    {:ok, socket}
   end
 end
