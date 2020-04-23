@@ -4,6 +4,7 @@
 @import "tailwindcss/components";
 
 /* Vendors */
+@import "vendor/liveview.css";
 @import "vendor/nprogress.css";
 
 @import "tailwindcss/utilities";
