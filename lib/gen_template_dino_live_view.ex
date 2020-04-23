@@ -20,7 +20,8 @@ defmodule GenTemplateDinoLiveView do
     base_assets = Path.expand("#{source_dir()}/../../base/assets/")
     target_assets = Path.expand("#{assigns.target_subdir}/assets/")
     # generate testing certs
-    System.cmd("mkdir",["-p", "./#{assigns.target_subdir}/priv/ssl"])
+    System.cmd("/bin/sh", ["-c", "mkdir -p ./#{assigns.target_subdir}/priv/{ssl,static/{js,css}}"])
+    System.cmd("/bin/sh", ["-c", "touch ./#{assigns.target_subdir}/priv/static/{js/app.js,css/app.css}"])
 
     IO.inspect(~s[cd #{assigns.target_subdir} && mix deps.get && npm i --prefix assets && mix phx.gen.cert -o priv/ssl/#{assigns.project_name}], pretty: true, label: "You are almost ready, let's run this")
     File.cp_r(base_assets, target_assets)
