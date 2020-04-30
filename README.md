@@ -19,7 +19,7 @@ mix archive.install hex mix_generator
 Install the gen_template_dino_live_view using the following command:
 
 ```
-mix template.install gen_template_dino_live_view
+mix template.install hex gen_template_dino_live_view
 ```
 
 ## Usage
