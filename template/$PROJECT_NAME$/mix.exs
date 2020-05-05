@@ -49,7 +49,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
   def application do
     [
       mod: {<%= @project_name_camel_case %>.Application, []},
-      extra_applications: [:logger, :runtime_tools, :inets]
+      extra_applications: [:logger, :runtime_tools, :inets, :os_mon]
     ]
   end
 
