@@ -19,13 +19,13 @@ mix archive.install hex mix_generator
 Install the gen_template_dino_live_view using the following command:
 
 ```
-mix template.install gen_template_dino_live_view
+mix template.install hex gen_template_dino_live_view
 ```
 
 ## Usage
 
 ```
-mix gen phx_custom_template project
+mix gen gen_template_dino_live_view project
 ```
 
 Then go to into the `project` created and execute the following commands:
