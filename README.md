@@ -47,5 +47,4 @@ Please note you can easy remove the Example LiveView:
 Remember replace `project` with the name of your `project`.
 
 ----
-Created:  2019-09-22
-Updated: 2020-02-16 - upgraded to Phoenix 1.7.x and tailwind 1.2
+* Created:  2019-09-22
