@@ -5,7 +5,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
     [
       app: :<%= @project_name %>,
       version: "<%= @project_version %>",
-      elixir: "~> <%= @elixir_version %>",
+      elixir: "~> <%= @elixir_version |> String.slice(0..3) %>",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -27,6 +27,13 @@ defmodule <%= @project_name_camel_case %>.MixProject do
         "coveralls.html": :test
       ],
       deps: deps(),
+      releases: [
+        <%= @project_name %>: [
+          include_executables_for: [:unix],
+          applications: [runtime_tools: :permanent],
+          steps: [:assemble, :tar]
+        ]
+      ]
     ]
   end
 
@@ -42,7 +49,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
   def application do
     [
       mod: {<%= @project_name_camel_case %>.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :inets]
     ]
   end
 

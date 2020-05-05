@@ -26,3 +26,15 @@ proper certificate, for example from [Let's Encrypt](https://letsencrypt.org).
 
 NOTE: when using Google Chrome, open chrome://flags/#allow-insecure-localhost
 to enable the use of self-signed certificates on `localhost`.
+
+### build a docker image (production mode).
+
+```bash
+docker build --build-arg SECRET_KEY_BASE=$(mix phx.gen.secret) --tag <%= @project_name %>:$(grep 'version:' mix.exs | cut -d '"' -f2) .
+```
+
+### run the docker image.
+
+```bash
+docker run --publish 443:443 <%= @project_name %>:$(grep 'version:' mix.exs | cut -d '"' -f2)
+```
