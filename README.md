@@ -46,5 +46,7 @@ Please note you can easy remove the Example LiveView:
 
 Remember replace `project` with the name of your `project`.
 
+If you want self-signed trusted certs (only-locally) use [mkcert](https://github.com/FiloSottile/mkcert)
+
 ----
 * Created:  2019-09-22

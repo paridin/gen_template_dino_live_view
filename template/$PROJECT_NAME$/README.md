@@ -38,3 +38,12 @@ docker build --build-arg SECRET_KEY_BASE=$(mix phx.gen.secret) --tag <%= @projec
 ```bash
 docker run --publish 443:443 <%= @project_name %>:$(grep 'version:' mix.exs | cut -d '"' -f2)
 ```
+
+### self-signed certs with [mkcert](https://github.com/FiloSottile/mkcert)
+
+By default self-signed certs are invalid, but [mkcert](https://github.com/FiloSottile/mkcert) is the tool to make them valid, after you install it run.
+
+```bash
+mkcert -install
+mkcert -key-file ./priv/ssl/<%= @project_name %>_key.pem -cert-file ./priv/ssl/<%= @project_name %>.pem <%= @project_name %> "*.<%= @project_name %>" localhost 127.0.0.1 ::1
+```
