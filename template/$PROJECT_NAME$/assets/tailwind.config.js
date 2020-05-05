@@ -1,6 +1,16 @@
 const defaultConfig = require('tailwindcss/defaultConfig');
 
 module.exports = {
+  purge: {
+    content: [
+      '../lib/*_web/templates/**/*.html.eex',
+      '../lib/*_web/views/**/*.ex',
+      '../lib/*_web/live/**/*.html.leex',
+      '../lib/*_web/live/**/*.ex',
+      './js/**/*.js',
+    ],
+    defaultExtractor: content => content.match(/[\w-/.:]+(?<!:)/g) || []
+  },
   theme: {
     fontFamily: {
       'sans': ['Inter var', ...defaultConfig.theme.fontFamily.sans]
@@ -45,5 +55,9 @@ module.exports = {
     borderColor: ['responsive', 'group-hover', 'hover', 'focus'],
     display: ['responsive', 'first', 'last', 'hover', 'focus'],
   },
-  plugins: []
+  plugins: [
+    // Install Tailwind UI only if you have a license then run, npm install @tailwindcss/ui --save-dev
+    // and uncomment the following require
+    // require('@tailwindcss/ui'), 
+  ]
 }
