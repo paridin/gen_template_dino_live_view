@@ -2,7 +2,7 @@ defmodule GenTemplateDinoLiveView.Mixfile do
   use Mix.Project
 
   @name    :gen_template_dino_live_view
-  @version "0.2.8"
+  @version "0.2.9"
 
   @deps [
     { :mix_templates,  ">0.0.0",  app: false },
@@ -13,7 +13,7 @@ defmodule GenTemplateDinoLiveView.Mixfile do
   @github      "https://github.com/paridin/#{@name}"
 
   @description """
-  An opinionated template to create phoenix apps, using live view and tailwind.
+  An opinionated template to create phoenix apps, using live view and tailwind. (Live Dashboard Supported)
   """
 
   # ------------------------------------------------------------
