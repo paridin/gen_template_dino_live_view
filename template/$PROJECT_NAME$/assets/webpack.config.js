@@ -21,7 +21,6 @@ module.exports = (env, options) => {
       filename: 'app.js',
       path: path.resolve(__dirname, '../priv/static/js')
     },
-    devtool: devMode ? 'source-map' : undefined,
     module: {
       rules: [
         {
@@ -40,7 +39,6 @@ module.exports = (env, options) => {
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
-                sourceMap: devMode,
                 plugins: [
                   require('postcss-import'),
                   require('tailwindcss')('./tailwind.config.js'),
