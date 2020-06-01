@@ -73,6 +73,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:gettext, "~> 0.17"},
       {:jason, "~> 1.1"},
       # dev & test apps
+      {:dino_tasks, github: "paridin/dino_tasks"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:sobelow, "~> 0.8", only: :dev},
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
