@@ -23,6 +23,11 @@ defmodule <%= @project_name_camel_case %>Web.Router do
     live("/example", Live.WeatherExample)
   end
 
+  scope "/admin", <%= @project_name_camel_case %>Web do
+    pipe_through [:browser, :admins_only]
+    # admin routes, basic_auth is not for production.
+  end
+
   scope "/" do
     pipe_through [:browser, :admins_only]
     live_dashboard "/dashboard", metrics: <%= @project_name_camel_case %>Web.Telemetry
