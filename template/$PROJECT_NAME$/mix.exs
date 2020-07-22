@@ -43,6 +43,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       links: %{}
     ]
   end
+
   # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.

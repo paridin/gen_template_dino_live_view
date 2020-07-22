@@ -52,6 +52,7 @@ defmodule <%= @project_name_camel_case %>Web.Live.WeatherExample do
   defp weather(local) do
     {:ok, {{_, 200, _}, _, body}} =
       :httpc.request(:get, {~c"http://wttr.in/#{URI.encode(local)}?format=1", []}, [], [])
+
     IO.iodata_to_binary(body)
   end
 end
