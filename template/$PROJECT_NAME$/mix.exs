@@ -62,24 +62,29 @@ defmodule <%= @project_name_camel_case %>.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.0"},
+      {:gettext, "~> 0.18"},
+      {:jason, "~> 1.2"},
+      {:phoenix, "~> 1.5"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_html, "~> 2.14"},
-      {:phoenix_live_view, "~> 0.12"},
+      {:phoenix_live_view, "~> 0.14"},
       {:phoenix_live_dashboard, "~> 0.2"},
-      {:telemetry_metrics, "~> 0.4"},
-      {:telemetry_poller, "~> 0.4"},
-      {:plug_cowboy, "~> 2.1"},
-      {:gettext, "~> 0.17"},
-      {:jason, "~> 1.1"},
+      {:plug_cowboy, "~> 2.2"},
+      {:telemetry_metrics, "~> 0.5"},
+      {:telemetry_poller, "~> 0.5"},
+      # prod debug
+      {:recon, "~> 2.5"},
       # dev & test apps
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dino_tasks, github: "paridin/dino_tasks"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:sobelow, "~> 0.8", only: :dev},
-      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.22", only: :dev, runtime: false},
+      {:ex_machina, "~> 2.4", only: :test},
+      {:excoveralls, "~> 0.13", only: :test},
+      {:exvcr, "~> 0.11", only: [:dev, :test]},
       {:floki, ">= 0.0.0", only: :test},
-      {:excoveralls, "~> 0.10", only: :test}
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:sobelow, "~> 0.8", only: [:dev, :test]}
     ]
   end
 end
