@@ -22,11 +22,6 @@ ENV SKIP_PHOENIX=${SKIP_PHOENIX} \
     HEX_ORG_NAME=${HEX_ORG_NAME} \
     HEX_ORG_TOKEN=${HEX_ORG_TOKEN}
 
-# This step installs all the build tools we'll need
-RUN apk update && \ 
-    apk add --no-cache yarn && \
-    rm -rf /var/cache/apk/* 
-
 ADD mix.exs mix.lock ./
 RUN mix local.hex --force; mix local.rebar --force
 RUN [[ ! -z "$HEX_ORG_NAME" && ! -z "$HEX_ORG_TOKEN" ]] && mix hex.organization auth ${HEX_ORG_NAME} --key ${HEX_ORG_TOKEN} || echo "no hex org configured"
@@ -41,12 +36,12 @@ ADD . .
 # If you aren't building a Phoenix app, pass `--build-arg SKIP_PHOENIX=true`
 # This is mostly here for demonstration purposes
 RUN if [ ! "$SKIP_PHOENIX" = "true" ]; then \
-  cd ${PHOENIX_SUBDIR}/assets && \
-  yarn install && \
-  yarn deploy && \
-  cd - && \
-  mix phx.digest; \
-fi
+    cd ${PHOENIX_SUBDIR}/assets && \
+    npm i && \
+    npm run deploy && \
+    cd - && \
+    mix phx.digest; \
+    fi
 
 RUN set -ex && \
     APP_NAME=$(grep 'app:' mix.exs | sed -e 's/\[//g' -e 's/ //g' -e 's/app://' -e 's/[:,]//g') && \
@@ -64,8 +59,9 @@ EXPOSE 4000
 
 RUN apk update && \
     apk add --no-cache \
-      bash \
-      openssl-dev
+    bash \
+    openssl-dev && \
+    rm -rf /var/cache/apk/* 
 
 ENV PORT=4000
 
