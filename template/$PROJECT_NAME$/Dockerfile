@@ -52,7 +52,7 @@ RUN set -ex && \
     tar -xvzf _build/${MIX_ENV}/${APP_NAME}-${APP_VSN}.tar.gz -C /opt/built
 
 # From this line onwards, we're in a new image, which will be the image used in production
-FROM gliderlabs/alpine
+FROM alpine:3.11.6
 
 # Set exposed ports
 EXPOSE 4000
@@ -60,6 +60,7 @@ EXPOSE 4000
 RUN apk update && \
     apk add --no-cache \
     bash \
+    curl \
     openssl-dev && \
     rm -rf /var/cache/apk/* 
 
