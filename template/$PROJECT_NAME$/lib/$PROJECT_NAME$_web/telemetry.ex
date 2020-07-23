@@ -1,4 +1,7 @@
 defmodule <%= @project_name_camel_case %>Web.Telemetry do
+  @moduledoc """
+  Telemetry
+  """
   use Supervisor
   import Telemetry.Metrics
 
