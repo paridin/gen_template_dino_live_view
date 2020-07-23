@@ -1,6 +1,7 @@
 {
   "repository": {},
   "license": "MIT",
+  "description": "The front-end dependencies.",
   "scripts": {
     "deploy": "NODE_ENV=production webpack --mode production",
     "watch": "webpack --mode development --watch"
