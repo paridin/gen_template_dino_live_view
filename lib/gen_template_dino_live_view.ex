@@ -7,7 +7,7 @@ defmodule GenTemplateDinoLiveView do
       "An opinionated template to create phoenix apps, using live view, live dashboard and tailwind, SSL Ready.",
     source_dir: "../template",
     options: [
-      project_version: [default: "0.1.1"],
+      project_version: [default: "0.1.0"],
       secret_key_base: [default: salt(64)],
       signing_salt_session: [default: salt(8)],
       signing_salt_live: [default: salt(32)],
