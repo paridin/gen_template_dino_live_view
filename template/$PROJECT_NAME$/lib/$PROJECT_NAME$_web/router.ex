@@ -19,8 +19,13 @@ defmodule <%= @project_name_camel_case %>Web.Router do
   scope "/", <%= @project_name_camel_case %>Web do
     pipe_through(:browser)
 
-    live("/", Live.Home)
-    live("/example", Live.WeatherExample)
+    get("/", PageController, :index)
+  end
+
+  scope "/", <%= @project_name_camel_case %>Web.Live do
+    pipe_through(:browser)
+
+    live("/example", WeatherExample, :index, as: :live_example)
   end
 
   scope "/admin", <%= @project_name_camel_case %>Web do

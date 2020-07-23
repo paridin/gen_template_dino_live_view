@@ -1,4 +1,3 @@
-<%%= live_component(@socket, <%= @project_name_camel_case %>Web.Live.Layout.Header, id: :main_header, open_menu_mobile?: false) %>
 <main role="main">
   <!-- bg-color-50 px-1.5 my-1.5 are part of tailwind ui if you don't have a license you can change with to bg-color-100 and up to 2 or add those items to your custom number in tailwind.config.js -->
   <%%= if live_flash(@flash, :success) do %>
