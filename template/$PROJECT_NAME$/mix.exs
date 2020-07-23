@@ -77,7 +77,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:recon, "~> 2.5"},
       # dev & test apps
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:dino_tasks, github: "paridin/dino_tasks"},
+      {:dino_tasks, github: "paridin/dino_tasks", only: :dev},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:ex_machina, "~> 2.4", only: :test},
       {:excoveralls, "~> 0.13", only: :test},
