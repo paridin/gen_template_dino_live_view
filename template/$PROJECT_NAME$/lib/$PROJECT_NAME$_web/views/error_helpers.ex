@@ -8,10 +8,10 @@ defmodule <%= @project_name_camel_case %>Web.ErrorHelpers do
   @doc """
   Generates tag for inlined form input errors.
   """
-  def error_tag(form, field) do
+  def error_tag(form, field, extra_classes \\ "") do
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
       content_tag(:span, translate_error(error),
-        class: "invalid-feedback mt-2 text-sm text-red-600 block",
+        class: "invalid-feedback mt-2 text-sm text-red-600 block #{extra_classes}",
         phx_feedback_for: input_id(form, field)
       )
     end)
