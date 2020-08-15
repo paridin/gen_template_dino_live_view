@@ -19,6 +19,16 @@ defmodule <%= @project_name_camel_case %>Web.Live.WeatherExample do
           <span class="text-2xl">↬</span> Source
         </a>
       </header>
+      <nav class="flex flex-col my-4">
+        <header class="text-lg">
+          Try live flash messages
+        </header>
+        <div class="p-4 bg-green-800">
+          <%%= for {kind, _msg, class} <- @live_flashes do %>
+            <button phx-click="set-flash" phx-value-kind="<%%= kind %>" class="<%%= class %> focus:outline-none rounded-md text-gray-800 px-2.5 py-1.5"><%%= kind %></button>
+          <%% end %>
+        </div>
+      </nav>
       <div class="mt-4 text-white bg-green-900 rounded shadow-lg">
         <form phx-submit="set-location">
           <input class="px-2 py-2 text-gray-800" name="location" placeholder="Location" value="<%%= @location %>" />
@@ -32,13 +42,31 @@ defmodule <%= @project_name_camel_case %>Web.Live.WeatherExample do
   @impl true
   def mount(_params, _session, socket) do
     send(self(), {:put, "Mexico City"})
-    {:ok, assign(socket, location: nil, weather: "...")}
+    live_flashes = [
+      {:success, "Excellent your are watching a success message", "bg-green-50"},
+      {:info, "An info message is displayed", "bg-blue-50"},
+      {:warn, "Oops we warn you with this message", "bg-yellow-50"},
+      {:error, "An error message is detected", "bg-red-50"}
+    ]
+
+    {:ok, assign(socket, location: nil, weather: "...", live_flashes: live_flashes)}
   end
 
   @impl true
   def handle_event("set-location", %{"location" => location}, socket) do
     {:noreply, put_location(socket, location)}
   end
+
+  @impl true
+  def handle_event("set-flash", %{"kind" => kind}, socket) do
+    {kind, msg, _class} =
+      socket.assigns.live_flashes
+      |> Enum.filter(fn {k, _msg, _class} -> k == String.to_existing_atom(kind) end)
+      |> hd()
+
+    {:noreply, put_flash(socket, kind, msg)}
+  end
+
 
   @impl true
   def handle_info({:put, location}, socket) do
