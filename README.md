@@ -38,6 +38,12 @@ yarn # install assets if you prefer npm just run; npm install
 cd - # go back to the project root directory
 iex -S mix phx.server # start the server
 ```
+![Alt Text](http://g.recordit.co/HPFhP5Kpoz.gif)
+
+## Troubles during the bootstrap
+
+see issue [#1](https://github.com/paridin/gen_template_dino_live_view/issues/1)
+
 
 Please note you can easy remove the Example LiveView:
 
