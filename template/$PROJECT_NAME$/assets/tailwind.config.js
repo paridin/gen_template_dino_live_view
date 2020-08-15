@@ -88,8 +88,7 @@ module.exports = {
     display: ["responsive", "first", "last", "hover", "focus"],
   },
   plugins: [
-    // Install Tailwind UI only if you have a license then run, npm install @tailwindcss/ui --save-dev
-    // and uncomment the following require
-    // require('@tailwindcss/ui'),
+    // Tailwind UI requires a license check details at tailwindui.com
+    require("@tailwindcss/ui"),
   ],
 };
