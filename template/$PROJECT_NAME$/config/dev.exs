@@ -17,8 +17,8 @@ config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
     # HTTPS_PORT=4443 mix phx.server
     port: String.to_integer(System.get_env("HTTPS_PORT", "4001")),
     otp_app: :<%= @project_name %>,
-    certfile: "priv/ssl/<%= @project_name %>.pem",
-    keyfile: "priv/ssl/<%= @project_name %>_key.pem"
+    certfile: System.get_env("HTTPS_CERT_FILE") || "priv/ssl/<%= @project_name %>.pem",
+    keyfile: System.get_env("HTTPS_KEY_FILE") || "priv/ssl/<%= @project_name %>_key.pem"
   ],
   debug_errors: true,
   code_reloader: true,
