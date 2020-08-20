@@ -1,3 +1,8 @@
+## 0.2.13
+
+- Handle environment variables (HTTPS) during dev, utils if you customize your router `port forwarding` and get a valid certs. `letsencrypt` with your domain.
+
+
 ## 0.2.12
 
 ### Enhancements
