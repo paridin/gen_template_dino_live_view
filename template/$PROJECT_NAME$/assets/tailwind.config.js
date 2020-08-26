@@ -1,6 +1,9 @@
 const defaultConfig = require("tailwindcss/defaultConfig");
 
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
   purge: {
     content: [
       "../lib/*_web/templates/**/*.html.eex",
