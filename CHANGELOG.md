@@ -1,4 +1,12 @@
+## 0.2.14
+
+### Enhancements
+
+- Update JS dependencies (tailwind, babel)
+
 ## 0.2.13
+
+### Enhancements
 
 - Handle environment variables (HTTPS) during dev, utils if you customize your router `port forwarding` and get a valid certs. `letsencrypt` with your domain.
 
