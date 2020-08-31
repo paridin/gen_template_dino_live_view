@@ -1,3 +1,9 @@
+## 0.2.15
+
+### Bug Fixes
+
+- render header correctly.
+
 ## 0.2.14
 
 ### Enhancements

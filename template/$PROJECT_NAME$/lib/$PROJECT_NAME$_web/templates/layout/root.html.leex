@@ -16,7 +16,7 @@
     <%%= csrf_meta_tag() %>
   </head>
   <body class="font-sans antialiased">
-    <%%= render "_header.html", conn: @conn %>
+    <%%= render "_header.html", assigns %>
     <%%= @inner_content %>
   </body>
   <script><%%= raw(render("app.js")) %></script>
