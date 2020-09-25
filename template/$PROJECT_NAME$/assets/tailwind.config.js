@@ -7,6 +7,7 @@ module.exports = {
   purge: {
     content: [
       "../lib/*_web/templates/**/*.html.eex",
+      "../lib/*_web/templates/**/*.html.leex",
       "../lib/*_web/views/**/*.ex",
       "../lib/*_web/live/**/*.html.leex",
       "../lib/*_web/live/**/*.ex",
