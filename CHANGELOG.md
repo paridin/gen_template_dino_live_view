@@ -6,6 +6,10 @@
 - improve docker image creation.
 - improve config release to handle dynamic url.
 
+### Enhancements
+
+- allow to close non liveview messages via alpinejs
+
 ## 0.2.15
 
 ### Bug Fixes
