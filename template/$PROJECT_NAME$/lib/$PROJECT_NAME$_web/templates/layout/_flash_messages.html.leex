@@ -1,6 +1,6 @@
 <!-- bg-color-50 px-1.5 my-1.5 are part of tailwind ui if you don't have a license you can change with to bg-color-100 and up to 2 or add those items to your custom number in tailwind.config.js -->
 <%%= if get_flash(@conn, :success) do %>
-  <div class="p-4 rounded-md bg-green-50" role="alert">
+  <div x-show="open" x-data="{ open: true }" class="p-4 rounded-md bg-green-50" role="alert">
     <div class="flex">
       <div class="flex-shrink-0">
         <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -17,6 +17,7 @@
       <div class="pl-3 ml-auto">
         <div class="-mx-1.5 -my-1.5">
           <button
+            @click="open = false"
             class="inline-flex rounded-md p-1.5 text-green-500 hover:bg-green-100 focus:outline-none focus:bg-green-100 transition ease-in-out duration-150">
             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd"
@@ -30,7 +31,7 @@
   </div>
 <%% end %>
 <%%= if get_flash(@conn, :info) do %>
-  <div class="p-4 rounded-md bg-blue-50" role="alert">
+  <div x-show="open" x-data="{ open: true }" class="p-4 rounded-md bg-blue-50" role="alert">
     <div class="flex">
       <div class="flex-shrink-0">
         <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
@@ -47,6 +48,7 @@
       <div class="pl-3 ml-auto">
         <div class="-mx-1.5 -my-1.5">
           <button
+            @click="open = false"
             class="inline-flex rounded-md p-1.5 text-blue-500 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 transition ease-in-out duration-150">
             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd"
@@ -60,7 +62,7 @@
   </div>
 <%% end %>
 <%%= if get_flash(@conn, :warn) do %>
-  <div class="p-4 rounded-md bg-yellow-50" role="alert">
+  <div x-show="open" x-data="{ open: true }" class="p-4 rounded-md bg-yellow-50" role="alert">
     <div class="flex">
       <div class="flex-shrink-0">
         <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -77,6 +79,7 @@
       <div class="pl-3 ml-auto">
         <div class="-mx-1.5 -my-1.5">
           <button
+            @click="open = false"
             class="inline-flex rounded-md p-1.5 text-yellow-500 hover:bg-yellow-100 focus:outline-none focus:bg-yellow-100 transition ease-in-out duration-150">
             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd"
@@ -90,7 +93,7 @@
   </div>
 <%% end %>
 <%%= if get_flash(@conn, :error) do %>
-  <div class="p-4 rounded-md bg-red-50" role="alert">
+  <div x-show="open" x-data="{ open: true }" class="p-4 rounded-md bg-red-50" role="alert">
     <div class="flex">
       <div class="flex-shrink-0">
         <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
@@ -107,6 +110,7 @@
       <div class="pl-3 ml-auto">
         <div class="-mx-1.5 -my-1.5">
           <button
+            @click="open = false"
             class="inline-flex rounded-md p-1.5 text-red-500 hover:bg-red-100 focus:outline-none focus:bg-red-100 transition ease-in-out duration-150">
             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd"
