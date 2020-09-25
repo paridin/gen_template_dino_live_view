@@ -1,3 +1,11 @@
+## 0.2.16
+
+### Bug Fixes
+
+- Missing files for PurgeCss
+- improve docker image creation.
+- improve config release to handle dynamic url.
+
 ## 0.2.15
 
 ### Bug Fixes
