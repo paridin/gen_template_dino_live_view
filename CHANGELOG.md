@@ -1,3 +1,12 @@
+## 0.2.17
+
+### Enhancements
+
+- Support build with to identify which version the project is using and discover missing patches.
+- Github actions support for testing
+- Creation directory use bash instead of sh, since we can reproduce the issue I hope this solve the creation of directories on ubuntu.
+- Add `wallaby` testing, dependencies
+
 ## 0.2.16
 
 ### Bug Fixes
