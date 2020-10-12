@@ -12,6 +12,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       test_coverage: [tool: ExCoveralls],
       description: "My awesome project <%= @project_name %>.",
       package: package(),
+      aliases: aliases(),
       # ExDoc
       name: "<%= @project_name %>",
       source_url: "https://github.com/<%= System.get_env("USER") %>/<%= @project_name %>",
@@ -73,6 +74,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:plug_cowboy, "~> 2.2"},
       {:telemetry_metrics, "~> 0.5"},
       {:telemetry_poller, "~> 0.5"},
+      # # {:libcluster, "~> X.Y"}
       # prod debug
       {:recon, "~> 2.5"},
       # dev & test apps
@@ -85,7 +87,24 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:floki, ">= 0.0.0", only: :test},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:sobelow, "~> 0.8", only: [:dev, :test]}
+      {:sobelow, "~> 0.8", only: [:dev, :test]},
+      # {:ex_machina, "~> 2.4", only: :test},
+      {:wallaby, "~> 0.26", [runtime: false, only: :test]}
     ]
   end
+
+  defp aliases, do: [
+    "test": [
+      "assets.compile --quiet",
+      "test",
+    ],
+    "assets.compile": &compile_assets/1
+  ]
+
+  defp compile_assets(_) do
+    Mix.shell().cmd("cd assets && ./node_modules/.bin/webpack --mode development",
+      quiet: true
+    )
+  end
+
 end

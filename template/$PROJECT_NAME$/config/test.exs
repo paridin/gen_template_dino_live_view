@@ -8,3 +8,8 @@ config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
+  server: true
+
+config :<%= @project_name %>, :sql_sandbox, true

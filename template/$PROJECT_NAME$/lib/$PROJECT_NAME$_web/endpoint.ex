@@ -1,6 +1,10 @@
 defmodule <%= @project_name_camel_case %>Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :<%= @project_name %>
 
+  if Application.get_env(:<%= @project_name %>, :sql_sandbox) do
+    plug Phoenix.Ecto.SQL.Sandbox
+  end
+
   @session_options [
     store: :cookie,
     key: "_<%= @project_name %>_key",
