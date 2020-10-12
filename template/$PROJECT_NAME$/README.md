@@ -7,13 +7,6 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4001`](https://localhost:4001) from your browser.
 
-```
-  Created: <%= @now.local.date_time %>
-  based on
-    elixir: <%= @elixir_version %>
-    erlang: <%= @erlang_version %>
-    OTP: <%= @otp_release %>
-```
 
 Remember to update the `mix.exs` file with your own configuration.
 
@@ -46,4 +39,14 @@ By default self-signed certs are invalid, but [mkcert](https://github.com/FiloSo
 ```bash
 mkcert -install
 mkcert -key-file ./priv/ssl/<%= @project_name %>_key.pem -cert-file ./priv/ssl/<%= @project_name %>.pem <%= @project_name %> "*.<%= @project_name %>" localhost 127.0.0.1 ::1
+```
+
+Build with <%= @build_with %>.
+
+```
+  Created: <%= @now.local.date_time %>
+  based on
+    elixir: <%= @elixir_version %>
+    erlang: <%= @erlang_version %>
+    OTP: <%= @otp_release %>
 ```
