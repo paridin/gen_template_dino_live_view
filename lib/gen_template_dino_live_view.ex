@@ -7,6 +7,7 @@ defmodule GenTemplateDinoLiveView do
       "An opinionated template to create phoenix apps, using live view, live dashboard and tailwind, SSL Ready.",
     source_dir: "../template",
     options: [
+      build_with: [default: "dino liveview template version 0.2.17"],
       project_version: [default: "0.1.0"],
       secret_key_base: [default: salt(64)],
       signing_salt_session: [default: salt(8)],
@@ -20,9 +21,9 @@ defmodule GenTemplateDinoLiveView do
     base_assets = Path.expand("#{source_dir()}/../../base/assets/")
     target_assets = Path.expand("#{assigns.target_subdir}/assets/")
     # generate testing certs
-    System.cmd("/bin/sh", ["-c", "mkdir -p ./#{assigns.target_subdir}/priv/{ssl,static/{js,css}}"])
+    System.cmd("/bin/bash", ["-c", "mkdir -p ./#{assigns.target_subdir}/priv/{ssl,static/{js,css}}"])
 
-    System.cmd("/bin/sh", [
+    System.cmd("/bin/bash", [
       "-c",
       "touch ./#{assigns.target_subdir}/priv/static/{js/app.js,css/app.css}"
     ])
@@ -36,6 +37,14 @@ defmodule GenTemplateDinoLiveView do
     )
 
     File.cp_r(base_assets, target_assets)
+    # copy github action for testing
+    copy_github_action(assigns)
+  end
+
+  def copy_github_action(assigns) do
+    base = Path.expand("#{source_dir()}/../../base/github_action/")
+    target = Path.expand("#{assigns.target_subdir}/")
+    File.cp_r(base, target)
   end
 
   defp salt(length) do
