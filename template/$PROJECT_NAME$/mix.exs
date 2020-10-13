@@ -81,20 +81,19 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dino_tasks, github: "paridin/dino_tasks", only: :dev},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
-      {:ex_machina, "~> 2.4", only: :test},
+      # {:ex_machina, "~> 2.4", only: :test},
       {:excoveralls, "~> 0.13", only: :test},
       {:exvcr, "~> 0.11", only: [:dev, :test]},
       {:floki, ">= 0.0.0", only: :test},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:sobelow, "~> 0.8", only: [:dev, :test]},
-      # {:ex_machina, "~> 2.4", only: :test},
       {:wallaby, "~> 0.26", [runtime: false, only: :test]}
     ]
   end
 
   defp aliases, do: [
-    "test": [
+    test: [
       "assets.compile --quiet",
       "test",
     ],
@@ -106,5 +105,4 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       quiet: true
     )
   end
-
 end
