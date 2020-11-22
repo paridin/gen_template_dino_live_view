@@ -12,7 +12,7 @@ defmodule <%= @project_name_camel_case %>Web.ConnCase do
   inside a transaction which is reset at the beginning
   of the test unless the test case is marked as async.
   """
-
+  import Plug.BasicAuth
   use ExUnit.CaseTemplate
 
   using do
@@ -29,5 +29,15 @@ defmodule <%= @project_name_camel_case %>Web.ConnCase do
 
   setup _tags do
     {:ok, conn: Phoenix.ConnTest.build_conn()}
+  end
+
+  def log_in_basic(conn) do
+    username = "<%= @basic_auth_user %>"
+    password = "<%= @basic_auth_password %>"
+
+    conn
+    |> Phoenix.ConnTest.init_test_session(%{})
+    |> Plug.Conn.put_req_header("authorization", encode_basic_auth(username, password))
+    |> basic_auth(username: username, password: password)
   end
 end
