@@ -1,98 +1,24 @@
-const defaultConfig = require("tailwindcss/defaultConfig");
+const base = require("./tailwind.helpers");
 
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
   },
+  presets: [require("./brand.preset")],
   purge: {
-    content: [
-      "../lib/*_web/templates/**/*.html.eex",
-      "../lib/*_web/templates/**/*.html.leex",
-      "../lib/*_web/views/**/*.ex",
-      "../lib/*_web/live/**/*.html.leex",
-      "../lib/*_web/live/**/*.ex",
-      "./js/**/*.js",
-    ],
+    content: base.content(),
     defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
     options: {
-      whitelist: [
-        // required by info messages
-        "bg-blue-50",
-        "bg-blue-100",
-        "text-blue-400",
-        "text-blue-500",
-        "text-blue-800",
-        "bg-yellow-50",
-        "bg-yellow-100",
-        "text-yellow-400",
-        "text-yellow-500",
-        "text-yellow-800",
-        "bg-red-50",
-        "bg-red-100",
-        "text-red-400",
-        "text-red-500",
-        "text-red-800",
-        "bg-green-50",
-        "bg-green-100",
-        "text-green-400",
-        "text-green-500",
-        "text-green-800",
-      ],
+      // whitelist: Prevents classes to be removed.
+      // Dev tip: If your styles don't show correctly on prod, it could be because those classes are running behind of a condition.
+      // `base.noPurge` accepts a list, that list must include the classes which are behind a condition.
+      // The function just concat the default classes which are for flash messages.
+      whitelist: base.noPurge(),
     },
   },
-  theme: {
-    fontFamily: {
-      sans: ["Inter var", ...defaultConfig.theme.fontFamily.sans],
-    },
-    extend: {
-      screens: {
-        xs: "320px",
-      },
-      height: {
-        "h-1/2": "50%",
-        "h-1/3": "33.333333%",
-        "h-2/3": "66.666667%",
-        "h-1/4": "25%",
-        "h-2/4": "50%",
-        "h-3/4": "75%",
-        "h-1/5": "20%",
-        "h-2/5": "40%",
-        "h-3/5": "60%",
-        "h-4/5": "80%",
-        "h-1/6": "16.666667%",
-        "h-2/6": "33.333333%",
-        "h-3/6": "50%",
-        "h-4/6": "66.666667%",
-        "h-5/6": "83.333333%",
-        "h-1/12": "8.333333%",
-        "h-2/12": "16.666667%",
-        "h-3/12": "25%",
-        "h-4/12": "33.333333%",
-        "h-5/12": "41.666667%",
-        "h-6/12": "50%",
-        "h-7/12": "58.333333%",
-        "h-8/12": "66.666667%",
-        "h-9/12": "75%",
-        "h-10/12": "83.333333%",
-        "h-11/12": "92.666667%",
-      },
-    },
-  },
+
   variants: {
-    borderWidth: ["responsive", "group-hover", "hover", "focus"],
-    borderRadius: [
-      "responsive",
-      "group-hover",
-      "first",
-      "last",
-      "hover",
-      "focus",
-    ],
-    borderColor: ["responsive", "group-hover", "hover", "focus"],
-    display: ["responsive", "first", "last", "hover", "focus"],
+    ...base.variants,
   },
-  plugins: [
-    // Tailwind UI requires a license check details at tailwindui.com
-    require("@tailwindcss/ui"),
-  ],
+  plugins: [],
 };
