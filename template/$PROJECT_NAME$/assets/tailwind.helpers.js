@@ -31,17 +31,3 @@ export const noPurge = (extras = []) =>
     "text-green-500",
     "text-green-800",
   ].concat(extras);
-
-export const variants = {
-  borderWidth: ["responsive", "group-hover", "hover", "focus"],
-  borderRadius: [
-    "responsive",
-    "group-hover",
-    "first",
-    "last",
-    "hover",
-    "focus",
-  ],
-  borderColor: ["responsive", "group-hover", "hover", "focus"],
-  display: ["responsive", "first", "last", "hover", "focus"],
-};
