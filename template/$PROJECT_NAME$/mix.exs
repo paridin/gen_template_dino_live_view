@@ -69,25 +69,26 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:phoenix, "~> 1.5"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_html, "~> 2.14"},
-      {:phoenix_live_view, "~> 0.14"},
-      {:phoenix_live_dashboard, "~> 0.2"},
+      {:phoenix_live_view, "~> 0.15"},
+      {:phoenix_live_dashboard, "~> 0.4"},
       {:plug_cowboy, "~> 2.2"},
-      {:telemetry_metrics, "~> 0.5"},
+      {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 0.5"},
-      # # {:libcluster, "~> X.Y"}
+      {:ecto_psql_extras, "~> 0.4.1"},
+      # {:libcluster, "~> 3.2"}
       # prod debug
       {:recon, "~> 2.5"},
       # dev & test apps
-      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:dino_tasks, github: "paridin/dino_tasks", only: :dev},
-      {:ex_doc, "~> 0.22", only: :dev, runtime: false},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      # {:dino_tasks, github: "paridin/dino_tasks", only: :dev},
+      {:ex_doc, "~> 0.23", only: :dev, runtime: false},
       # {:ex_machina, "~> 2.4", only: :test},
       {:excoveralls, "~> 0.13", only: :test},
-      {:exvcr, "~> 0.11", only: [:dev, :test]},
+      {:exvcr, "~> 0.12", only: [:dev, :test]},
       {:floki, ">= 0.0.0", only: :test},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:sobelow, "~> 0.8", only: [:dev, :test]},
+      {:phoenix_live_reload, "~> 1.3", only: :dev},
+      {:sobelow, "~> 0.10", only: [:dev, :test]},
       {:wallaby, "~> 0.26", [runtime: false, only: :test]}
     ]
   end
