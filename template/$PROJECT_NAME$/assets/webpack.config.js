@@ -9,7 +9,7 @@ module.exports = (env, options) => {
   return {
     optimization: {
       minimizer: [
-        new TerserPlugin({ cache: true, parallel: true, sourceMap: false }),
+        new TerserPlugin({ parallel: true }),
       ],
     },
     entry: {
@@ -36,12 +36,14 @@ module.exports = (env, options) => {
             {
               loader: "postcss-loader",
               options: {
-                ident: "postcss",
-                plugins: [
-                  require("postcss-import"),
-                  require("tailwindcss")("./tailwind.config.js"),
-                  require("postcss-preset-env")({ stage: 1 }),
-                ],
+                postcssOptions: {
+                  ident: "postcss",
+                  plugins: [
+                    require("postcss-import"),
+                    require("tailwindcss")("./tailwind.config.js"),
+                    require("postcss-preset-env")({ stage: 1 }),
+                  ],
+                },
               },
             },
           ],
