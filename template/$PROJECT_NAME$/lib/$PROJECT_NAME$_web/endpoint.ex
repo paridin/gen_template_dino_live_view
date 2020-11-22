@@ -36,7 +36,7 @@ defmodule <%= @project_name_camel_case %>Web.Endpoint do
     at: "/",
     from: :<%= @project_name %>,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js favicon.ico robots.txt uploads)
   )
 
   # Code reloading can be explicitly enabled under the

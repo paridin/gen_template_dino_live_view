@@ -21,7 +21,7 @@ defmodule GenTemplateDinoLiveView do
     base_assets = Path.expand("#{source_dir()}/../../base/assets/")
     target_assets = Path.expand("#{assigns.target_subdir}/assets/")
     # generate testing certs
-    System.cmd("/bin/bash", ["-c", "mkdir -p ./#{assigns.target_subdir}/priv/{ssl,static/{js,css}}"])
+    System.cmd("/bin/bash", ["-c", "mkdir -p ./#{assigns.target_subdir}/priv/{ssl,static/{js,css},uploads}"])
 
     System.cmd("/bin/bash", [
       "-c",
