@@ -36,5 +36,7 @@ defmodule <%= @project_name_camel_case %>Web.Router do
   scope "/" do
     pipe_through([:browser, :admins_only])
     live_dashboard("/dashboard", metrics: <%= @project_name_camel_case %>Web.Telemetry)
+    # Note: if you have ecto installed with ecto_psql_extras remove previous and uncomment the follow line.
+    # live_dashboard("/dashboard", metrics: <%= @project_name_camel_case %>Web.Telemetry, ecto_repos: [<%= @project_name_camel_case %>.Repo])
   end
 end
