@@ -31,7 +31,7 @@ defmodule GenTemplateDinoLiveView do
     IO.inspect(
       ~s[cd #{assigns.target_subdir} && mix deps.get && npm i --prefix assets && mix phx.gen.cert -o priv/ssl/#{
         assigns.project_name
-      } && git init],
+      } && mix format && git init],
       pretty: true,
       label: "You are almost ready, let's run this"
     )
