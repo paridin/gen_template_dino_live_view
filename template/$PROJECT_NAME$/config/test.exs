@@ -12,4 +12,5 @@ config :logger, level: :warn
 config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
   server: true
 
-config :<%= @project_name %>, :sql_sandbox, true
+# activate this flag to run test with ecto and wallaby.
+config :<%= @project_name %>, :sql_sandbox, false
