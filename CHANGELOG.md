@@ -1,3 +1,9 @@
+## 0.2.18
+
+- Upgrade to latest JS libraries, Tailwind 2.0
+- update dependencies
+- fix issues during testing.
+
 ## 0.2.17
 
 ### Enhancements
@@ -5,7 +11,7 @@
 - Support build with to identify which version the project is using and discover missing patches.
 - Github actions support for testing
 - Creation directory use bash instead of sh, since we can reproduce the issue I hope this solve the creation of directories on ubuntu.
-- Add `wallaby` testing, dependencies
+- Add `wallaby` testing, dependencies (full support on dino template) or add manually ecto and check for wallaby on source code to check the tips.
 
 ## 0.2.16
 
