@@ -17,6 +17,7 @@ defmodule <%= @project_name_camel_case %>Web.FeatureCase do
   end
 
   setup tags do
+    # Uncomment the following lines if you want to use ecto integration with wallaby
     # :ok = Ecto.Adapters.SQL.Sandbox.checkout(<%= @project_name_camel_case %>.Repo)
 
     # unless tags[:async] do
@@ -24,7 +25,8 @@ defmodule <%= @project_name_camel_case %>Web.FeatureCase do
     # end
 
     # metadata = Phoenix.Ecto.SQL.Sandbox.metadata_for(<%= @project_name_camel_case %>.Repo, self())
-    {:ok, session} = Wallaby.start_session(metadata: metadata)
-    {:ok, session: session}
+    # {:ok, session} = Wallaby.start_session(metadata: metadata)
+    # {:ok, session: session}
+    :ok
   end
 end

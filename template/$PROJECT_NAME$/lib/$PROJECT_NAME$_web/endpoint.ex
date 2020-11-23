@@ -1,6 +1,7 @@
 defmodule <%= @project_name_camel_case %>Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :<%= @project_name %>
 
+  # The following plug works with wallaby during the integration tests with ecto.
   if Application.get_env(:<%= @project_name %>, :sql_sandbox) do
     plug Phoenix.Ecto.SQL.Sandbox
   end
