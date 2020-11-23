@@ -12,5 +12,5 @@ config :logger, level: :warn
 config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
   server: true
 
-# activate this flag to run test with ecto and wallaby.
+# phoenix_ecto depends on this flag, that's why wallaby needs it to run tests with ecto integration.
 config :<%= @project_name %>, :sql_sandbox, false
