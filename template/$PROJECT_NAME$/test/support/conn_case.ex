@@ -31,13 +31,16 @@ defmodule <%= @project_name_camel_case %>Web.ConnCase do
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 
-  def log_in_basic(conn) do
-    username = "<%= @basic_auth_user %>"
-    password = "<%= @basic_auth_password %>"
+  defmodule Helpers do
+    @moduledoc false
+    def log_in_basic(conn) do
+      username = "<%= @basic_auth_user %>"
+      password = "<%= @basic_auth_password %>"
 
-    conn
-    |> Phoenix.ConnTest.init_test_session(%{})
-    |> Plug.Conn.put_req_header("authorization", encode_basic_auth(username, password))
-    |> basic_auth(username: username, password: password)
+      conn
+      |> Phoenix.ConnTest.init_test_session(%{})
+      |> Plug.Conn.put_req_header("authorization", encode_basic_auth(username, password))
+      |> basic_auth(username: username, password: password)
+    end
   end
 end

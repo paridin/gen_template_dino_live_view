@@ -3,6 +3,7 @@ defmodule <%= @project_name_camel_case %>Web.LiveDashboardTest do
   Visit Liveview Dashboard
   """
   use <%= @project_name_camel_case %>Web.ConnCase, async: true
+  import <%= @project_name_camel_case %>Web.ConnCase.Helpers
   import Phoenix.LiveViewTest
 
   setup %{conn: conn} do
