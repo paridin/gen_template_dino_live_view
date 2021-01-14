@@ -1,3 +1,7 @@
+## 0.2.20
+- Minor changes
+## 0.2.19
+- Minor changes
 ## 0.2.18
 
 - Upgrade to latest JS libraries, Tailwind 2.0
