@@ -20,6 +20,9 @@ defmodule <%= @project_name_camel_case %>Web.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
+      import Phoenix.LiveViewTest
+      import <%= @project_name_camel_case %>Web.ConnCase.Helpers
+
       alias <%= @project_name_camel_case %>Web.Router.Helpers, as: Routes
 
       # The default endpoint for testing
