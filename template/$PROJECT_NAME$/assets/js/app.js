@@ -10,19 +10,28 @@ import "phoenix_html";
 import LiveSocket from "phoenix_live_view";
 // Import LiveViewHooks
 import LiveViewHooks from "./liveview";
-// Support for NProgress loading states.
-import NProgress from "nprogress";
 // Since we don't want to use by default the local socket just import from phoenix.
 import { Socket } from "phoenix";
 // We need to import the CSS so that webpack will load it.
 // The MiniCssExtractPlugin is used to separate it out into
 // its own CSS file.
 import css from "../css/app.css";
+// Support for topbar to loading states.
+import topbar from "topbar";
 
-NProgress.configure({ showSpinner: false, minimum: 0.1 });
+topbar.config({
+  barThickness: 5,
+  barColors: {
+    0: "rgba(26,  188, 156, .7)",
+    ".3": "rgba(41,  128, 185, .7)",
+    "1.0": "rgba(231, 76,  60,  .7)",
+  },
+  shadowBlur: 8,
+  shadowColor: "rgba(0, 0, 0, .5)",
+});
 
-window.addEventListener("phx:page-loading-start", (info) => NProgress.start());
-window.addEventListener("phx:page-loading-stop", (info) => NProgress.done());
+window.addEventListener("phx:page-loading-start", (info) => topbar.show());
+window.addEventListener("phx:page-loading-stop", (info) => topbar.hide());
 
 // Import local files
 //
