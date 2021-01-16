@@ -1,3 +1,6 @@
+## 0.2.21
+- update JS deps
+- drop support for nprogress, and support topbar js.
 ## 0.2.20
 - Minor changes
 ## 0.2.19
