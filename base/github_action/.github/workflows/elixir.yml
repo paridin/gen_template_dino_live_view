@@ -1,30 +1,145 @@
-name: Elixir CI
+name: Elixir CI with support for CD for AWS (ECR ECS)
 
-on: push
+# The CD only runs for tags. (Before your first tag, update this file where the change-me value exists.)
+# The CD requires the following secrets.
+# AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY
+# AWS_REGION
+# ECR_REPOSITORY
+# SECRET_KEY_BASE
+# COOKIE
+# ECS_SERVICE
+# ECS_CLUSTER
+
+# The following secretes are optional. The docker file uses them to get org packages.
+# HEX_ORG_NAME
+# HEX_ORG_TOKEN
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "*"
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    services:
+      db:
+        image: postgres:13
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     strategy:
       matrix:
         otp: ['23.1']
-        elixir: ['1.10.4', '1.11.0']
+        elixir: ['1.10.4', '1.11.4', '1.12.x']
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
+      - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: |
+            deps
+            /usr/local/bin
+          key: ${{ runner.os }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-mix-
+
       - name: Install Dependencies
         shell: bash
         run: |
-          apt-get update
-          apt-get -qq -y install curl make build-essential git
-          mix local.rebar --force
-          mix local.hex --force
-          [[ ! -z "$HEX_ORG_NAME" && ! -z "$HEX_ORG_TOKEN" ]] && mix hex.organization auth ${{ secrets.HEX_ORG_NAME }} --key ${{ secrets.HEX_KEY }} || echo "no hex org configured"
+          sudo apt-get update
+          sudo apt-get -qq -y install curl make build-essential git
+          [[ ! -f /usr/local/bin/chromedriver ]] && \
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+            sudo dpkg -i google-chrome-stable_current_amd64.deb; sudo apt-get -fy install && \
+            CHROME_DRIVER_VERSION=`curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
+            wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/ && \
+            unzip ~/chromedriver_linux64.zip -d ~/ && rm ~/chromedriver_linux64.zip && \
+            sudo mv -f ~/chromedriver /usr/local/bin/chromedriver && sudo chown root:root /usr/local/bin/chromedriver && sudo chmod 0755 /usr/local/bin/chromedriver
+          mix local.rebar --force && mix local.hex --force
+          [[ ! -z "${{ secrets.HEX_ORG_NAME }}" && ! -z "${{ secrets.HEX_ORG_TOKEN }}" ]] && mix hex.organization auth ${{ secrets.HEX_ORG_NAME }} --key ${{ secrets.HEX_ORG_TOKEN }} || echo "no hex org configured"
           mix deps.get
-          
-      - name: Run Tests
+
+      - name: Run tests
+        shell: bash
+        # env:
+        # MY_VAR
         run: mix test
+
+# Uncomment the following code if you needs CD to AWS ECS
+# cd:
+#   name: Deployment
+#   runs-on: ubuntu-20.04
+#   needs:
+#     - ci
+#   if: startsWith(github.ref, 'refs/tags/')
+#   steps:
+#     - name: "Checkout Code"
+#       uses: "actions/checkout@v2"
+
+#     - name: Set tag
+#       id: vars
+#       run: echo "::set-output name=tag::${GITHUB_REF#refs/*/}"
+
+#     - name: Configure AWS credentials
+#       uses: aws-actions/configure-aws-credentials@v1
+#       with:
+#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#         aws-region: ${{ secrets.AWS_REGION }}
+
+#     - name: Login to Amazon ECR
+#       id: login-ecr
+#       uses: aws-actions/amazon-ecr-login@v1
+
+#     - name: Build, tag, and push image to Amazon ECR
+#       id: build-image
+#       env:
+#         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+#         ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+#         SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+#         COOKIE: ${{ secrets.COOKIE }}
+#         IMAGE_TAG: ${{ steps.vars.outputs.tag }}
+#         HEX_ORG_NAME: ${{ secrets.HEX_ORG_NAME }}
+#         HEX_ORG_TOKEN: ${{ secrets.HEX_ORG_TOKEN }}
+#       run: |
+#         docker build --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE --build-arg COOKIE=$COOKIE --build-arg HEX_ORG_NAME=$HEX_ORG_NAME --build-arg HEX_ORG_TOKEN=$HEX_ORG_TOKEN -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+#         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+#         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+#         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+#     - name: Download task definition
+#       run: |
+#         aws ecs describe-task-definition --task-definition td-change-me-with-task-definition-name \
+#         --query taskDefinition > task-definition.json
+#     - name: Fill in the new image ID in the Amazon ECS task definition
+#       id: task-def
+#       uses: aws-actions/amazon-ecs-render-task-definition@v1
+#       with:
+#         task-definition: task-definition.json
+#         container-name: change-me_with_container_name
+#         image: ${{ steps.build-image.outputs.image }}
+
+#     - name: Deploy Amazon ECS task definition
+#       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+#       with:
+#         task-definition: ${{ steps.task-def.outputs.task-definition }}
+#         service: ${{ secrets.ECS_SERVICE }}
+#         cluster: ${{ secrets.ECS_CLUSTER }}
+#         wait-for-service-stability: true
