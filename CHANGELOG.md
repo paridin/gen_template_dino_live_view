@@ -1,10 +1,21 @@
+## 0.2.22
+
+### Enhancements
+- update JS deps (tailwind 2.1 JIT supported)
+- support for git hooks via git_hooks package.
+- update elixir deps.
+- GitHub action template supports `Continuos Deployment.` See `elixir.yml`.
+
 ## 0.2.21
 - update JS deps
 - drop support for nprogress, and support topbar js.
+
 ## 0.2.20
 - Minor changes
+
 ## 0.2.19
 - Minor changes
+
 ## 0.2.18
 
 - Upgrade to latest JS libraries, Tailwind 2.0
