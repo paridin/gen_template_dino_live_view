@@ -1,6 +1,7 @@
 const base = require("./tailwind.helpers");
 
 module.exports = {
+  mode: 'jit',
   presets: [require("./brand.preset")],
   purge: {
     content: base.content(),
@@ -13,5 +14,5 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };

@@ -1,5 +1,16 @@
 name: Elixir CI with support for CD for AWS (ECR ECS)
 
+# After you push a new tag, the deployment will start.
+#
+# Hint: If you are learning AWS also, the cd block use ECR (registry for images), 
+#       ECS (cluster, service, task definition), CloudWatch (logs).
+#
+# Keep in mind the following concepts are related to complete the deployment. 
+# EC2 (security group, target group, load balancer).
+# AWS Certificate Manager.
+# Route 53 (zone).
+# RDS.
+
 # The CD only runs for tags. (Before your first tag, update this file where the change-me value exists.)
 # The CD requires the following secrets.
 # AWS_ACCESS_KEY_ID
