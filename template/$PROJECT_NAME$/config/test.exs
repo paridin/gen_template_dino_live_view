@@ -14,3 +14,22 @@ config :<%= @project_name %>, <%= @project_name_camel_case %>Web.Endpoint,
 
 # phoenix_ecto depends on this flag, that's why wallaby needs it to run tests with ecto integration.
 config :<%= @project_name %>, :sql_sandbox, false
+
+config :git_hooks,
+  auto_install: true,
+  verbose: true,
+  hooks: [
+    pre_commit: [
+      tasks: [
+        {:cmd, "mix credo --strict"},
+        {:cmd, "mix compile --force --warnings-as-errors"}
+      ]
+    ],
+    pre_push: [
+      verbose: false,
+      tasks: [
+        {:cmd, "bash ci.sh"},
+        {:cmd, "echo 'success!'"}
+      ]
+    ]
+  ]

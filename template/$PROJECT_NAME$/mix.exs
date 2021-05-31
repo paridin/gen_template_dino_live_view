@@ -75,7 +75,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 0.5"},
       # The following requieres postgres you should use dino template instead.
-      # {:ecto_psql_extras, "~> 0.4.1"},
+      # {:ecto_psql_extras, "~> 0.6"},
       # {:libcluster, "~> 3.2"}
       # prod debug
       {:recon, "~> 2.5"},
@@ -90,6 +90,7 @@ defmodule <%= @project_name_camel_case %>.MixProject do
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:phoenix_live_reload, "~> 1.3", only: :dev},
       {:sobelow, "~> 0.10", only: [:dev, :test]},
+      {:git_hooks, "~> 0.6.0", only: [:test, :dev], runtime: false},
       # search for wallaby to find tips if ecto is enabled.
       {:wallaby, "~> 0.26", [runtime: false, only: :test]}
     ]
